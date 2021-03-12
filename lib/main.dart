@@ -44,7 +44,10 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print("_HomePageState.build called");
+    var currentStateImg =
+        "assets/images/${wordToGuess.currentStateImage()}.png";
+    var gameOverImage = "assets/images/${wordToGuess.gameOverImage()}.png";
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -65,8 +68,28 @@ class _HomePageState extends State<HomePage> {
                 fontFamily: 'IndieFlower',
               ),
             ),
-            Expanded(child: Image.asset("assets/images/${wordToGuess.currentStateImage()}.png")),
-            LettersWidget(wordToGuess: wordToGuess, onLetterPressed: tryLetter),
+            Expanded(child: Image.asset(currentStateImg)),
+            wordToGuess.isGameOver()
+                ? Column(
+                    children: [
+                      SizedBox(
+                        width: 100,
+                        child: Image.asset(gameOverImage, color: Colors.red,),
+                      ),
+                      Text(
+                        '${wordToGuess.word}',
+                        style: TextStyle(
+                          fontSize: 48,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 2,
+                          color: Colors.orange[500],
+                          fontFamily: 'IndieFlower',
+                        ),
+                      ),
+                    ],
+                  )
+                : LettersWidget(
+                    wordToGuess: wordToGuess, onLetterPressed: tryLetter),
           ],
         ),
       ),

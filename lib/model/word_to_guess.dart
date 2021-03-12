@@ -1,5 +1,6 @@
 class WordToGuess {
   static final String STATE_NAME = 'hangman';
+  static final int MAX_TRIALS = 10;
   final String word;
 
   List<String> chars;
@@ -23,8 +24,28 @@ class WordToGuess {
 
   String currentStateImage() {
     int stateNumber = badTrialCount + 1;
+    if (stateNumber > MAX_TRIALS) {
+      stateNumber = MAX_TRIALS;
+    }
+
     String stateNumberPadded = "$stateNumber".padLeft(2, '0');
     return "$STATE_NAME-$stateNumberPadded";
+  }
+
+  String gameOverImage() {
+    return isGameOverWithSuccess() ? 'success' : 'fail';
+  }
+
+  bool isGameOver() {
+    return isGameOverWithFailure() || isGameOverWithSuccess();
+  }
+
+  bool isGameOverWithFailure() {
+    return badTrialCount >= MAX_TRIALS - 1;
+  }
+
+  bool isGameOverWithSuccess() {
+    return !wordGame().contains('_');
   }
 
   String wordGame() {

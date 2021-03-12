@@ -59,16 +59,8 @@ flutter:
     - assets/images/hangman-08.png
     - assets/images/hangman-09.png
     - assets/images/hangman-10.png
-    - assets/images/hangman-01.svg
-    - assets/images/hangman-02.svg
-    - assets/images/hangman-03.svg
-    - assets/images/hangman-04.svg
-    - assets/images/hangman-05.svg
-    - assets/images/hangman-06.svg
-    - assets/images/hangman-07.svg
-    - assets/images/hangman-08.svg
-    - assets/images/hangman-09.svg
-    - assets/images/hangman-10.svg
+    - assets/images/fail.png
+    - assets/images/success.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
