@@ -30,6 +30,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   WordToGuess wordToGuess = WordToGuess(word: 'AMOUR');
 
+  void reset() {
+    setState(() {
+      wordToGuess = WordToGuess(word: 'AMOUR');
+    });
+  }
+
   void tryLetter(String c) {
     setState(() {
       wordToGuess.tryChar(c: c);
@@ -59,17 +65,14 @@ class _HomePageState extends State<HomePage> {
                 fontFamily: 'IndieFlower',
               ),
             ),
-            Expanded(child: Image.asset(
-                'assets/images/hangman-10.png')),
-            LettersWidget(onLetterPressed: tryLetter),
+            Expanded(child: Image.asset('assets/images/hangman-10.png')),
+            LettersWidget(wordToGuess: wordToGuess, onLetterPressed: tryLetter),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          tryLetter('O');
-        },
-        child: Icon(Icons.add),
+        onPressed: () => reset(),
+        child: Icon(Icons.refresh),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

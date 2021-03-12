@@ -1,7 +1,10 @@
 class WordToGuess {
-  String word;
+  static final String STATE_NAME = 'hangman';
+  final String word;
+
   List<String> chars;
   List<String> charsTried = [];
+  int badTrialCount = 0;
 
   WordToGuess({this.word}) {
     this.chars = this.word.split('');
@@ -12,7 +15,16 @@ class WordToGuess {
       charsTried.add(c);
     }
 
-    return chars.contains(c);
+    bool ok = chars.contains(c);
+    if (!ok) {
+      badTrialCount++;
+    }
+  }
+
+  String currentStateImage() {
+    int stateNumber = badTrialCount + 1;
+    String stateNumberPadded = "$stateNumber".padLeft(2, '0');
+    return "$STATE_NAME-$stateNumberPadded";
   }
 
   String wordGame() {
