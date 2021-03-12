@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hangman/letters-widget.dart';
 import 'package:hangman/model/word_to_guess.dart';
+import 'package:hangman/work_session_conclusion.dart';
+import 'package:hangman/work_session_text.dart';
 
 void main() => runApp(HangmanApp());
 
@@ -46,7 +48,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     var currentStateImg =
         "assets/images/${wordToGuess.currentStateImage()}.png";
-    var gameOverImage = "assets/images/${wordToGuess.gameOverImage()}.png";
 
     return Scaffold(
       appBar: AppBar(
@@ -58,36 +59,10 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              '${wordToGuess.wordGame()}',
-              style: TextStyle(
-                fontSize: 48,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 2,
-                color: Colors.orange[500],
-                fontFamily: 'IndieFlower',
-              ),
-            ),
+            WordSessionText(wordToGuess: wordToGuess, isHiddenMode: true),
             Expanded(child: Image.asset(currentStateImg)),
             wordToGuess.isGameOver()
-                ? Column(
-                    children: [
-                      SizedBox(
-                        width: 100,
-                        child: Image.asset(gameOverImage, color: Colors.red,),
-                      ),
-                      Text(
-                        '${wordToGuess.word}',
-                        style: TextStyle(
-                          fontSize: 48,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 2,
-                          color: Colors.orange[500],
-                          fontFamily: 'IndieFlower',
-                        ),
-                      ),
-                    ],
-                  )
+                ? WordSessionConclusion(wordToGuess: wordToGuess)
                 : LettersWidget(
                     wordToGuess: wordToGuess, onLetterPressed: tryLetter),
           ],
@@ -95,7 +70,7 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       floatingActionButton: FloatingActionButton(
-        onPressed: () => reset(),
+        onPressed: reset,
         child: Icon(Icons.refresh),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
