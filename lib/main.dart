@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hangman/letters-widget.dart';
 import 'package:hangman/model/word_to_guess.dart';
-import 'package:hangman/work_session_conclusion.dart';
-import 'package:hangman/work_session_text.dart';
+import 'package:hangman/work_session_conclusion_widget.dart';
+import 'package:hangman/work_session_text_widget.dart';
 
 void main() => runApp(HangmanApp());
 

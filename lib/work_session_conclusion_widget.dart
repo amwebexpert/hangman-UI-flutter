@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hangman/work_session_text.dart';
+import 'package:hangman/work_session_text_widget.dart';
 
 import 'model/word_to_guess.dart';
 
