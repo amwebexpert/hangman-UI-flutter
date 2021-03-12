@@ -22,7 +22,14 @@ class LettersWidget extends StatelessWidget {
                 onPressed: wordToGuess.charsTried.contains(c)
                     ? null
                     : () => onLetterPressed(c),
-                child: Text(c),
+                child: Text(
+                  c,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontFamily: 'IndieFlower',
+                  ),
+                ),
               ))
           .toList(),
     );

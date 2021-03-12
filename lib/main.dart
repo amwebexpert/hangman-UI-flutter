@@ -11,7 +11,7 @@ class HangmanApp extends StatelessWidget {
     return MaterialApp(
       title: 'Hangman App',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.orange,
       ),
       home: HomePage(title: 'Hangman'),
     );
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
-        backgroundColor: Colors.green[900],
+        backgroundColor: Colors.orange[700],
       ),
       body: Center(
         child: Column(
@@ -61,15 +61,16 @@ class _HomePageState extends State<HomePage> {
                 fontSize: 48,
                 fontWeight: FontWeight.bold,
                 letterSpacing: 2,
-                color: Colors.green[500],
+                color: Colors.orange[500],
                 fontFamily: 'IndieFlower',
               ),
             ),
-            Expanded(child: Image.asset('assets/images/hangman-10.png')),
+            Expanded(child: Image.asset("assets/images/${wordToGuess.currentStateImage()}.png")),
             LettersWidget(wordToGuess: wordToGuess, onLetterPressed: tryLetter),
           ],
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       floatingActionButton: FloatingActionButton(
         onPressed: () => reset(),
         child: Icon(Icons.refresh),
