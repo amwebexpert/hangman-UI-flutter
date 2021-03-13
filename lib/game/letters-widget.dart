@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'letter-widget.dart';
-import 'model/word_to_guess.dart';
+import '../model/word_to_guess.dart';
 
 class LettersWidget extends StatelessWidget {
   static final ALL_LETTERS_AS_STRING = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';

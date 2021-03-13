@@ -49,18 +49,8 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-    - assets/images/hangman-01.png
-    - assets/images/hangman-02.png
-    - assets/images/hangman-03.png
-    - assets/images/hangman-04.png
-    - assets/images/hangman-05.png
-    - assets/images/hangman-06.png
-    - assets/images/hangman-07.png
-    - assets/images/hangman-08.png
-    - assets/images/hangman-09.png
-    - assets/images/hangman-10.png
-    - assets/images/fail.png
-    - assets/images/success.png
+    - assets/images/
+    - assets/fonts/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

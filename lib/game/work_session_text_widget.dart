@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'model/word_to_guess.dart';
+import '../model/word_to_guess.dart';
 
 class WordSessionText extends StatelessWidget {
   final WordToGuess wordToGuess;

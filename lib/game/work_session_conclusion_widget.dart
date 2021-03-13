@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hangman/work_session_text_widget.dart';
+import 'package:hangman/game/work_session_text_widget.dart';
 
-import 'model/word_to_guess.dart';
+import '../model/word_to_guess.dart';
 
 class WordSessionConclusion extends StatelessWidget {
   final WordToGuess wordToGuess;
