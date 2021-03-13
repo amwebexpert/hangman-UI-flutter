@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:convert' as convert;
+import 'package:http/http.dart' as http;
 
 class LoadingWidget extends StatefulWidget {
   @override
@@ -14,11 +16,21 @@ class _LoadingWidgetState extends State<LoadingWidget> {
   }
 
   void loadData() async {
-    List<String> categories = await Future.delayed(Duration(seconds: 5), () {
-      return ['Animal', 'Transport'];
+    List<String> categories = await Future.delayed(Duration(milliseconds: 100), () {
+      return ['Animaux', 'Transport'];
     });
 
-    Navigator.pushReplacementNamed(context, '/game', arguments: { categories: categories });
+    Uri url = Uri.https('jsonplaceholder.typicode.com', '/todos/1');
+    http.Response response = await http.get(url);
+    if (response.statusCode == 200) {
+      Map jsonResponse = convert.jsonDecode(response.body);
+      print(jsonResponse);
+      print(jsonResponse['title']);
+    } else {
+      print('Request failed with status: ${response.statusCode}.');
+    }
+
+    Navigator.pushReplacementNamed(context, '/game', arguments: { 'categories': categories });
   }
 
   @override
