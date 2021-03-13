@@ -7,7 +7,6 @@ void main() => runApp(HangmanApp());
 
 class HangmanApp extends StatelessWidget {
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,7 +14,7 @@ class HangmanApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      initialRoute: '/game',
+      initialRoute: '/',
       routes: {
         '/': (context) => LoadingWidget(),
         '/game': (context) => GameWidget(),

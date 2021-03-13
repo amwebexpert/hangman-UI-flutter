@@ -30,6 +30,8 @@ class _GameWidgetState extends State<GameWidget> {
     setState(() {
       wordToGuess = WordToGuess(word: 'AMOUR');
     });
+
+    Navigator.pushNamed(context, '/about');
   }
 
   void tryLetter(String c) {
