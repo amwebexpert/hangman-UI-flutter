@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'letter-widget.dart';
 import 'model/word_to_guess.dart';
 
 class LettersWidget extends StatelessWidget {
@@ -18,19 +19,10 @@ class LettersWidget extends StatelessWidget {
       alignment: WrapAlignment.center,
       spacing: 1,
       children: letters
-          .map((c) => ElevatedButton(
-                onPressed: wordToGuess.charsTried.contains(c)
-                    ? null
-                    : () => onLetterPressed(c),
-                child: Text(
-                  c,
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontFamily: 'IndieFlower',
-                  ),
-                ),
-              ))
+          .map((c) => LetterWidget(
+              letter: c,
+              wordToGuess: wordToGuess,
+              onLetterPressed: onLetterPressed))
           .toList(),
     );
   }
