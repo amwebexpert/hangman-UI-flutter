@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
 import 'dart:convert' as convert;
+
+import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart' as spinner;
 import 'package:http/http.dart' as http;
 
 class LoadingWidget extends StatefulWidget {
@@ -8,7 +10,6 @@ class LoadingWidget extends StatefulWidget {
 }
 
 class _LoadingWidgetState extends State<LoadingWidget> {
-
   @override
   void initState() {
     super.initState();
@@ -16,7 +17,8 @@ class _LoadingWidgetState extends State<LoadingWidget> {
   }
 
   void loadData() async {
-    List<String> categories = await Future.delayed(Duration(milliseconds: 100), () {
+    List<String> categories =
+        await Future.delayed(Duration(milliseconds: 100), () {
       return ['Animaux', 'Transport'];
     });
 
@@ -30,28 +32,16 @@ class _LoadingWidgetState extends State<LoadingWidget> {
       print('Request failed with status: ${response.statusCode}.');
     }
 
-    Navigator.pushReplacementNamed(context, '/game', arguments: { 'categories': categories });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
+    Navigator.pushReplacementNamed(context, '/game',
+        arguments: {'categories': categories});
   }
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(
-        'Loading...',
-        style: TextStyle(
-          fontSize: 48,
-          fontWeight: FontWeight.bold,
-          decoration: TextDecoration.none,
-          letterSpacing: 2,
-          color: Colors.orange[500],
-          fontFamily: 'IndieFlower',
-        ),
-      ),
-    );
+        child: spinner.SpinKitWave(
+      color: Colors.orange,
+      size: 50,
+    ));
   }
 }
