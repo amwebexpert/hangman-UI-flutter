@@ -17,7 +17,7 @@ class _GameWidgetState extends State<GameWidget> {
     setState(() => wordToGuess = WordToGuess(word: 'AMOUR'));
 
     // Navigate to About page...
-    // Navigator.pushNamed(context, '/about');
+    Navigator.pushNamed(context, '/about');
   }
 
   void tryLetter(String c) {
