@@ -18,18 +18,27 @@ class _GameWidgetState extends State<GameWidget> {
   @override
   void initState() {
     super.initState();
-    textToGuess = TextToGuess(word: service.shuffle().normalized);
+
+    String newText = service.shuffle().normalized;
+    textToGuess = TextToGuess(characters: newText);
   }
 
   void reset() {
-    setState(() => textToGuess = TextToGuess(word: service.shuffle().normalized));
-
-    // Navigate to About page...
-    Navigator.pushNamed(context, '/about');
+    String newText = service.shuffle().normalized;
+    setState(() => textToGuess = TextToGuess(characters: newText));
   }
 
   void tryLetter(String c) {
     setState(() => textToGuess.tryChar(c: c));
+  }
+
+  void appBarMenuItemClick(String value) {
+    switch (value) {
+      case 'A propos...':
+        // Navigate to About page...
+        Navigator.pushNamed(context, '/about');
+        break;
+    }
   }
 
   @override
@@ -45,6 +54,19 @@ class _GameWidgetState extends State<GameWidget> {
         title: Text('Le pendu numérique'),
         centerTitle: true,
         backgroundColor: Colors.orange[700],
+        actions: <Widget>[
+          PopupMenuButton<String>(
+            onSelected: appBarMenuItemClick,
+            itemBuilder: (BuildContext context) {
+              return {'A propos...'}.map((String choice) {
+                return PopupMenuItem<String>(
+                  value: choice,
+                  child: Text(choice),
+                );
+              }).toList();
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Column(

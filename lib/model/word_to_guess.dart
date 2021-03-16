@@ -1,14 +1,14 @@
 class TextToGuess {
   static final String STATE_NAME = 'hangman';
   static final int MAX_TRIALS = 10;
-  final String word;
+  final String characters;
 
   List<String> chars;
   List<String> charsTried = [];
   int badTrialCount = 0;
 
-  TextToGuess({this.word}) {
-    this.chars = this.word.split('');
+  TextToGuess({this.characters}) {
+    this.chars = this.characters.split('');
   }
 
   bool tryChar({String c}) {
@@ -49,7 +49,7 @@ class TextToGuess {
   }
 
   String wordGame() {
-    List<String> wordGame = word.split('');
+    List<String> wordGame = characters.split('');
 
     for (var i = 0; i < wordGame.length; i++) {
       String c = wordGame[i];

@@ -10,7 +10,7 @@ class WordSessionText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String text = this.isHiddenMode ? textToGuess.wordGame() : textToGuess.word;
+    String text = this.isHiddenMode ? textToGuess.wordGame() : textToGuess.characters;
 
     return Text(
       text,
