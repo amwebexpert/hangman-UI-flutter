@@ -25,7 +25,6 @@ class _LoadingWidgetState extends State<LoadingWidget> {
 
     await service.loadCategories();
     await service.loadData();
-    print(service.entries);
 
     Navigator.pushReplacementNamed(context, '/game',
         arguments: {'categories': categories});
