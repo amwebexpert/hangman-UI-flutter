@@ -3,6 +3,7 @@ import 'package:hangman/game/letters-widget.dart';
 import 'package:hangman/game/work_session_conclusion_widget.dart';
 import 'package:hangman/game/work_session_text_widget.dart';
 import 'package:hangman/model/word_to_guess.dart';
+import 'package:hangman/services/hangman_service.dart';
 
 class GameWidget extends StatefulWidget {
   @override
@@ -10,11 +11,18 @@ class GameWidget extends StatefulWidget {
 }
 
 class _GameWidgetState extends State<GameWidget> {
-  TextToGuess textToGuess = TextToGuess(word: 'AMOUR');
+  final HangmanService service = HangmanService.INSTANCE;
+  TextToGuess textToGuess;
   Map data = {};
 
+  @override
+  void initState() {
+    super.initState();
+    textToGuess = TextToGuess(word: service.shuffle().normalized);
+  }
+
   void reset() {
-    setState(() => textToGuess = TextToGuess(word: 'AMOUR'));
+    setState(() => textToGuess = TextToGuess(word: service.shuffle().normalized));
 
     // Navigate to About page...
     Navigator.pushNamed(context, '/about');

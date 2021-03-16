@@ -1,9 +1,6 @@
-import 'dart:convert' as convert;
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart' as spinner;
 import 'package:hangman/services/hangman_service.dart';
-import 'package:http/http.dart' as http;
 
 class LoadingWidget extends StatefulWidget {
   @override
@@ -20,6 +17,7 @@ class _LoadingWidgetState extends State<LoadingWidget> {
   }
 
   void loadData() async {
+    // Future simulation using fixed delay...
     List<String> categories =
         await Future.delayed(Duration(milliseconds: 100), () {
       return ['Animaux', 'Transport'];

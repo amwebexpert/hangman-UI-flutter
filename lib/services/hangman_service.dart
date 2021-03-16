@@ -1,4 +1,5 @@
 import 'dart:convert' as convert;
+import 'dart:math';
 
 import 'package:http/http.dart' as http;
 
@@ -31,5 +32,10 @@ class HangmanService {
     } catch (e) {
       print('Request failed: ${e.toString()}');
     }
+  }
+
+  ApiText shuffle() {
+    int i = Random().nextInt(entries.length);
+    return entries.elementAt(i);
   }
 }
