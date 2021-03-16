@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hangman/categories/categories_widget.dart';
 import 'package:hangman/game/game_widget.dart';
 import 'package:hangman/loading/loading_widget.dart';
 import 'package:hangman/about/about_widget.dart';
@@ -18,6 +19,7 @@ class HangmanApp extends StatelessWidget {
       routes: {
         '/': (context) => LoadingWidget(),
         '/game': (context) => GameWidget(),
+        '/categories': (context) => CategoriesWidget(),
         '/about': (context) => AboutWidget(),
       },
     );

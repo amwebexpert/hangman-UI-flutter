@@ -23,6 +23,7 @@ class _LoadingWidgetState extends State<LoadingWidget> {
       return ['Animaux', 'Transport'];
     });
 
+    await service.loadCategories();
     await service.loadData();
     print(service.entries);
 

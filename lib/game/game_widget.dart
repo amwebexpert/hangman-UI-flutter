@@ -32,10 +32,14 @@ class _GameWidgetState extends State<GameWidget> {
     setState(() => textToGuess.tryChar(c: c));
   }
 
-  void appBarMenuItemClick(String value) {
+  void appBarMenuItemClick(String value) async {
     switch (value) {
+      case 'Categories':
+        dynamic result = await Navigator.pushNamed(context, '/categories');
+        print('new category: ${result['name']}');
+        this.reset();
+        break;
       case 'A propos...':
-        // Navigate to About page...
         Navigator.pushNamed(context, '/about');
         break;
     }
@@ -58,7 +62,7 @@ class _GameWidgetState extends State<GameWidget> {
           PopupMenuButton<String>(
             onSelected: appBarMenuItemClick,
             itemBuilder: (BuildContext context) {
-              return {'A propos...'}.map((String choice) {
+              return {'Categories', 'A propos...'}.map((String choice) {
                 return PopupMenuItem<String>(
                   value: choice,
                   child: Text(choice),
