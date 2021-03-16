@@ -85,7 +85,7 @@ class _GameWidgetState extends State<GameWidget> {
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
       floatingActionButton: FloatingActionButton(
         onPressed: reset,
         child: Icon(Icons.refresh),
