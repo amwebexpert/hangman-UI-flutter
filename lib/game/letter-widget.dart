@@ -4,14 +4,14 @@ import '../model/word_to_guess.dart';
 
 class LetterWidget extends StatelessWidget {
   final void Function(String c) onLetterPressed;
-  final WordToGuess wordToGuess;
+  final TextToGuess textToGuess;
   final String letter;
 
-  LetterWidget({this.letter, this.wordToGuess, this.onLetterPressed}) {}
+  LetterWidget({this.letter, this.textToGuess, this.onLetterPressed}) {}
 
   @override
   Widget build(BuildContext context) {
-    bool letterConsumed = wordToGuess.charsTried.contains(letter);
+    bool letterConsumed = textToGuess.charsTried.contains(letter);
 
     return ElevatedButton(
       onPressed: letterConsumed ? null : () => onLetterPressed(letter),

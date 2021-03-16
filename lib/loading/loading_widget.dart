@@ -22,14 +22,19 @@ class _LoadingWidgetState extends State<LoadingWidget> {
       return ['Animaux', 'Transport'];
     });
 
-    Uri url = Uri.https('jsonplaceholder.typicode.com', '/todos/1');
-    http.Response response = await http.get(url);
-    if (response.statusCode == 200) {
-      Map jsonResponse = convert.jsonDecode(response.body);
-      print(jsonResponse);
-      print(jsonResponse['title']);
-    } else {
-      print('Request failed with status: ${response.statusCode}.');
+    try {
+      Uri url = Uri.https('esighclouddemo.appspot.com', '/api/v1/categories/64d28a1e-24cf-40f7-a6f1-3a76fd534639/texts');
+      print(url);
+      http.Response response = await http.get(url);
+
+      if (response.statusCode == 200) {
+        Map jsonResponse = convert.jsonDecode(response.body);
+        print(jsonResponse);
+      } else {
+        print('Request failed with status: ${response.statusCode}.');
+      }
+    } catch (e) {
+      print('Request failed: ${e.toString()}');
     }
 
     Navigator.pushReplacementNamed(context, '/game',

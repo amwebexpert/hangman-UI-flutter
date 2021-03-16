@@ -10,18 +10,18 @@ class GameWidget extends StatefulWidget {
 }
 
 class _GameWidgetState extends State<GameWidget> {
-  WordToGuess wordToGuess = WordToGuess(word: 'AMOUR');
+  TextToGuess textToGuess = TextToGuess(word: 'AMOUR');
   Map data = {};
 
   void reset() {
-    setState(() => wordToGuess = WordToGuess(word: 'AMOUR'));
+    setState(() => textToGuess = TextToGuess(word: 'AMOUR'));
 
     // Navigate to About page...
     Navigator.pushNamed(context, '/about');
   }
 
   void tryLetter(String c) {
-    setState(() => wordToGuess.tryChar(c: c));
+    setState(() => textToGuess.tryChar(c: c));
   }
 
   @override
@@ -30,7 +30,7 @@ class _GameWidgetState extends State<GameWidget> {
     print(data['categories']);
 
     String currentStateImg =
-        "assets/images/${wordToGuess.currentStateImage()}.png";
+        "assets/images/${textToGuess.currentStateImage()}.png";
 
     return Scaffold(
       appBar: AppBar(
@@ -42,12 +42,12 @@ class _GameWidgetState extends State<GameWidget> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            WordSessionText(wordToGuess: wordToGuess, isHiddenMode: true),
+            WordSessionText(textToGuess: textToGuess, isHiddenMode: true),
             Expanded(child: Image.asset(currentStateImg)),
-            wordToGuess.isGameOver()
-                ? WordSessionConclusion(wordToGuess: wordToGuess)
+            textToGuess.isGameOver()
+                ? WordSessionConclusion(textToGuess: textToGuess)
                 : LettersWidget(
-                    wordToGuess: wordToGuess, onLetterPressed: tryLetter),
+                    textToGuess: textToGuess, onLetterPressed: tryLetter),
           ],
         ),
       ),

@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import '../model/word_to_guess.dart';
 
 class WordSessionText extends StatelessWidget {
-  final WordToGuess wordToGuess;
+  final TextToGuess textToGuess;
   final bool isHiddenMode;
 
-  WordSessionText({this.wordToGuess, this.isHiddenMode}) {}
+  WordSessionText({this.textToGuess, this.isHiddenMode}) {}
 
   @override
   Widget build(BuildContext context) {
-    String text = this.isHiddenMode ? wordToGuess.wordGame() : wordToGuess.word;
+    String text = this.isHiddenMode ? textToGuess.wordGame() : textToGuess.word;
 
     return Text(
       text,

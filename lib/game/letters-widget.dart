@@ -8,9 +8,9 @@ class LettersWidget extends StatelessWidget {
   static final List<String> letters = ALL_LETTERS_AS_STRING.split('');
 
   final void Function(String c) onLetterPressed;
-  final WordToGuess wordToGuess;
+  final TextToGuess textToGuess;
 
-  LettersWidget({this.wordToGuess, this.onLetterPressed}) {}
+  LettersWidget({this.textToGuess, this.onLetterPressed}) {}
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class LettersWidget extends StatelessWidget {
       children: letters
           .map((c) => LetterWidget(
               letter: c,
-              wordToGuess: wordToGuess,
+              textToGuess: textToGuess,
               onLetterPressed: onLetterPressed))
           .toList(),
     );

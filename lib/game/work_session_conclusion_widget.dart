@@ -4,15 +4,15 @@ import 'package:hangman/game/work_session_text_widget.dart';
 import '../model/word_to_guess.dart';
 
 class WordSessionConclusion extends StatelessWidget {
-  final WordToGuess wordToGuess;
+  final TextToGuess textToGuess;
 
-  WordSessionConclusion({this.wordToGuess}) {}
+  WordSessionConclusion({this.textToGuess}) {}
 
   @override
   Widget build(BuildContext context) {
-    String gameOverImage = "assets/images/${wordToGuess.gameOverImage()}.png";
+    String gameOverImage = "assets/images/${textToGuess.gameOverImage()}.png";
     MaterialColor color =
-        wordToGuess.isGameOverWithSuccess() ? Colors.green : Colors.red;
+        textToGuess.isGameOverWithSuccess() ? Colors.green : Colors.red;
 
     return Column(
       children: [
@@ -23,7 +23,7 @@ class WordSessionConclusion extends StatelessWidget {
             color: color,
           ),
         ),
-        WordSessionText(wordToGuess: wordToGuess, isHiddenMode: false),
+        WordSessionText(textToGuess: textToGuess, isHiddenMode: false),
       ],
     );
   }

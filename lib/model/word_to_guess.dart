@@ -1,4 +1,4 @@
-class WordToGuess {
+class TextToGuess {
   static final String STATE_NAME = 'hangman';
   static final int MAX_TRIALS = 10;
   final String word;
@@ -7,7 +7,7 @@ class WordToGuess {
   List<String> charsTried = [];
   int badTrialCount = 0;
 
-  WordToGuess({this.word}) {
+  TextToGuess({this.word}) {
     this.chars = this.word.split('');
   }
 
